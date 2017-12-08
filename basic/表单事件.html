@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel">
+class A extends React.Component{// 定义类大括号 render函数  返回一个方法
+    constructor(props){
+        super(props);//调用父类的方法
+        this.state  = {val:""};
+        this.handleChange = this.handleChange.bind(this);
+        this.getVal = this.getVal.bind(this);//，面向对象的思想方式,绑定this
+    }
+    handleChange(e){	
+    	let _val = e.target.value;
+		this.setState((prevState) =>({//利用箭头函数回调来改变状态
+				val:_val
+		}))
+    }
+    getVal(){
+    	alert(this.state.val);//数据的传递和获取
+    }
+    render() {// 组件中的render是函数   渲染页面的时候 render是方法的调用
+         return (// 文本框中改变的时候跟新数据，然后获取数据的时候可以随时获取的最新的数据  jsx中的事件名称使用大写的形式 驼峰的命名规则
+               <div>
+                    <input type="text" onChange={this.handleChange} />
+                    <input type="button" value="submit" onClick={this.getVal} />
+                    <div>{this.state.val}</div>
+               </div>
+         )
+    }
+}
+
+ReactDOM.render(
+        <A/>,
+        document.getElementById("app")
+)
+</script>
+</body>
+<ml>
