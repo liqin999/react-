@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //变量的结构赋值 就是赋值的操作 将对象（也可以是常量）赋值给左边的变量
+    let obj = {
+        firstName:"mick",
+        lastName:"tom",
+        hj:{
+            a:1,
+            b:2
+        }
+    };
+    let {firstName,lastName} = obj;
+
+    //嵌套的结构
+    let {hj:{a,b},hj} = obj;
+    console.log(`${firstName} ${lastName}`);
+    console.log(hj);
+    console.log(a,b);
+
+
+    //在函数参数的里面可以直接结构
+    function login({firstName,lastName}){//obj  将传入的参数给结构出来
+        console.log(`${firstName} ${lastName}`);
+    }
+    login({firstName:"a11", lastName:"b",})
+
+
+
+
+</script>
+</body>
+</html>

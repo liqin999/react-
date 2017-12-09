@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+    this is a demo
+</div>
+<script>
+//模板字符串的形式 模板字符串使用反引号，你可以使用${} 在里面写表达式
+    let firstName = "jack",
+        lastName = "tom";
+
+    let str = "My name is "+firstName + " " + lastName + "!";
+    let str2 = `My name is ${firstName} ${lastName}!`;
+
+    function fn(){
+        return "liqin"
+    }
+
+   let str3 = `My name is ${ fn() } ${lastName}!`;
+   let str4 = `My name is ${ 3>2 ? "ok" : "no" } ${lastName}!`;
+
+  /*  console.log(str);
+    console.log(str2);
+    console.log(str3);
+    console.log(str4);*/
+
+
+
+</script>
+</body>
+</html>

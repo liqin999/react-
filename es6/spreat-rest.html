@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //扩展运算符  ...  展开可以用到对象和数组的展开  使用：在一个对象或者数组中展开另外的一个对象或者数组
+    function fn(a,b,c){
+        console.log(a,b,c)
+    }
+    let arr=[1,2,3];
+    fn(...arr);//将数组展开，然后当做参数传递到函数中
+    fn(...[4,5,6]);
+
+    //可以在一个数组中展开另外的一个数组
+    console.log(["a","b",...[arr],"c"]);
+
+    //展开一个对象的形式 并且是打印出来
+    let obj = {a:1,b:2,c:3,d:4};
+
+    console.log(
+       {
+        a:20,
+        name:"zan",
+      // ...obj,
+        a:66
+      }
+    )
+
+    // rest剩余
+    // 在函数的形参里面使用 rest
+    function fun2(a,dd,...b){
+        console.log(a,dd,b)
+    }
+    fun2(1,2,3,4,5);// 1 2 [3,4,5]
+
+    //结构赋值 将一个对象赋值给一个含有变量的对象
+    //在结构一个对象的时候使用 rest
+    let {a,c,...rest} = obj;
+    console.log(a,c,rest)//1 3 {a:2,d:4} 
+
+
+</script>
+</body>
+</html>
