@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		
+	</div>
+</body>
+<script>
+	//使用构造函数的形式  
+/*	function Person(){
+		this.eye = 2;
+		this.hands = 2;
+	}
+	Person.prototype.singing = function(){
+		console.log("I can sing")
+	}
+	var a = new Person();//得到一个对象的实例 查看方法是否正确显示 
+	console.log(a);
+	a.singing();*/
+
+	//使用类的形式 construtor构造函数里面定义属性
+	//方法直接写在类中
+	class Person{
+		constructor(eye=2,hands=2){//类的构造函数，用于初始化一个对象的属性
+			this.eye = eye;
+		    this.hands = hands;
+		}
+		singing(){//原型上的方法写在类的里面
+			console.log("I can singing");
+		}
+	}
+	let a = new Person();
+	console.log(a);
+	a.singing();  
+
+   //类的继承extends，子类继承父类的所有属性和方法 
+   // 子类也可以有自己的属性和方法 如果是和父类重名的情况下，则会重写父类的属性和方法，子类也可以有自己独有的属性和方法
+	class NormalPerson extends Person{
+		constructor(name="Flowke"){
+			super(1000,2000);//调用一下父类的构造函数，当你继承了另外一个类的时候，必须要用。
+			//可以在调用父类构造函数的时候进行传值
+			//this.eye =  100;
+		    //this.hands = 2;
+		    //this.hands = 200;
+		    this.foot=2;
+		    this.name = name;
+		    this.singing = this.singing.bind(this);//为了防止外部的变量调用的时候 this找不到
+		}
+		singing(){
+			console.log(`${this.name} can singing`);
+		}
+		run(){
+			console.log("NormalPerson can run");
+		}
+		
+	}
+
+	var b = new NormalPerson("mike");//在构造函数实例化的时候，可以传入参数，然后在constructor就可以接受他的值了
+	console.log(b);
+	b.singing();//子类可以调用父类的方法，如果子类有方法或者属性的时候，则会重写父类
+
+	//关于类里面的方法 this的指向 将类里面的方法赋值给其他的变量的时候，会改变this的指向
+
+	let fnn = b.singing;//当不做修改的时候 this会变成undefined
+	fnn();
+
+</script>
+</html>
