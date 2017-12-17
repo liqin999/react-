@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+</head>
+<body>
+	<div id='root'></div>
+<script type="text/babel">
+//Fragments语法  可以让你聚合一个子元素的列表，并且不在dom中增加额外的节点
+
+class Table extends React.Component{
+     render(){
+		return(
+		    <table>
+		    	<tbody>
+		    		<tr>
+						<Columns />	
+				    </tr>
+		    	</tbody>
+				
+			</table>
+		)
+		
+     }
+}	
+
+class Columns extends React.Component{//使用 React.Fragment 组件，
+	  render(){
+		return(
+			 <React.Fragment>
+				<td>hello</td>
+		        <td>world</td>
+			 </React.Fragment>
+		)
+	}
+}
+
+ReactDOM.render(
+        <Table/>,
+        document.getElementById("root")
+)
+</script>
+</body>
+</html>
