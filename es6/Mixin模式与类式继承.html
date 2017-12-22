@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//普通人的实例
+	var Person = function(firstName,lastName){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = 'male'
+	}
+	// 定义一个超类
+	function SuperPerson(firstName,lastName,powers) {
+		//借用构造函数实现继承的形式 call实现借用构造函数的继承的性质
+		//构造函数上写实例，原型上写方法  借用构造函数  继承父类的属性和方法 类似于es6的继承  class A extends B{}
+		Person.call(this,firstName,lastName);
+		this.powers = powers;//powers是子类的自己的属性
+	}
+
+    //SuperPerson.prototype = Object.create(Person.prototype)
+    // 借用构造函数实现原型继承  继承可以继承类中的属性和方法
+    var superman = new SuperPerson("jack1","li",["flight","heat-version"]);
+    console.log(superman)
+
+
+
+    //用es6的类是继承实现
+    class A {
+    	constructor(firstName,lastName){
+    		this.firstName = firstName;
+			this.lastName = lastName;
+			this.gender = 'male'
+    	}
+    	toString(){
+
+    	}
+    }
+
+    class B extends A{//类的继承的性质自己继承父类 需要调用super
+    	constructor(firstName,lastName,powers){
+    		super(firstName,lastName);//调用父类的构造函数中的属性 super子类继承父类的构造函数
+			this.powers = powers;// 子类继承父类的方法
+    	}
+    	toString(){
+
+    	}
+    }
+    //类的执行是 将一个类实例化的形式  实例化的形式  类的实例化
+    var b = new B("jack","li",["flight","heat-version"]);
+    console.log(b)
+	</script>
+</body>
+</html>
